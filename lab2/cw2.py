@@ -7,6 +7,8 @@ img = cv2.imread('lena.jpg',cv2.IMREAD_GRAYSCALE)
 
 blur = cv2.GaussianBlur(img,(5,5),5)
 cv2.imshow('G blur',blur)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 kernel1 = np.array(([1,1,1,1,1],
                     [1,1,1,1,1],

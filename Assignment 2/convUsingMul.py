@@ -22,7 +22,7 @@ out_col = img_col + kCol - 1
 outImg = np.zeros([out_row,out_col])
 
 karnelMod = np.pad(karnel, ((out_row - KRow, 0),(0, out_col - kCol)),'constant', constant_values=0) 
-print(karnelMod.shape)
+#print(karnelMod.shape)
 
 toeplitz_list = []
 for i in range(karnelMod.shape[0]-1, -1, -1):  
