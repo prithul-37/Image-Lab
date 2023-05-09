@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img_inp = cv2.imread('img.jpg',cv2.IMREAD_GRAYSCALE)
+img_inp = cv2.imread('landscape.png',cv2.IMREAD_GRAYSCALE)
 cv2.imshow('input',img_inp)
 img_out = np.zeros((img_inp.shape[0],img_inp.shape[1]))
 
@@ -64,7 +64,7 @@ for i in range(0,256):
 out = cv2.normalize(img_out, None, 0, 1, cv2.NORM_MINMAX)
 cv2.imshow('output',out) 
 
-histr = cv2.calcHist([img_inp],[0],None,[256],[0,256])
+#histr = cv2.calcHist([img_inp],[0],None,[256],[0,256])
 # plt.plot(cdf)
 # plt.title("CDF input")
 # plt.show()

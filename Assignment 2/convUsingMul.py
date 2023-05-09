@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-from scipy.linalg import toeplitz as tplz
 
 img = cv2.imread('lena128.jpg',cv2.IMREAD_GRAYSCALE)
 cv2.imshow('inp',img)
