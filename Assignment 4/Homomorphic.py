@@ -6,15 +6,16 @@ img =  cv2.imread("lena.png",cv2.IMREAD_GRAYSCALE)
 
 width, height = img.shape
 
-angle = float(input("Angle: "))
-Yl = float(input("Gamma Low: "))
-Yh = float(input("Gamma High: "))
-c = float(input("C: "))
-d0 = float(input("D0: ")) 
-# Yl = .4
-# Yh =2
-# c =1.2
-# d0 = 10
+# angle = float(input("Angle: "))
+# Yl = float(input("Gamma Low: "))
+# Yh = float(input("Gamma High: "))
+# c = float(input("C: "))
+# d0 = float(input("D0: ")) 
+angle = 30
+Yl = .4
+Yh =2
+c =1.2
+d0 = 10
 
 x = np.linspace(0,1,height)
 y = np.linspace(0,1,width)
