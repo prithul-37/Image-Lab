@@ -74,23 +74,23 @@ cv2.imshow('output',out)
 # plt.show()
 
 
-plt.figure(figsize=(20, 4))
+plt.figure(figsize=(10,10))
 
-plt.subplot(1, 4, 1)
+plt.subplot(2, 2, 1)
 plt.title("Input Image Histogram")
 plt.hist(img_inp.ravel(),256,[0,255])
 
 
-plt.subplot(1, 4, 2)
+plt.subplot(2, 2, 2)
 plt.plot(cdf)
 plt.title("CDF input")
 
 
-plt.subplot(1, 4, 3)
+plt.subplot(2, 2, 3)
 plt.title("output Image Histogram")
 plt.hist(img_out.ravel(),256,[0,255])
 
-plt.subplot(1, 4, 4)
+plt.subplot(2, 2, 4)
 plt.plot(cdf2)
 plt.title("CDF output")
 plt.show()

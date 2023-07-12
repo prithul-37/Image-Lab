@@ -16,7 +16,39 @@ def erlang ():
         target[i] = val/x
     return target
 
-x = erlang()
+
+def cdf(imgg):
+    
+    hist = [0 for i in range (0,256)]
+    for x in range (0,imgg.shape[0]):
+        for y in range (0,imgg.shape[0]):
+            hist[imgg[x,y]] +=1
+    
+    
+    totalPixel= imgg.shape[0] * imgg.shape[1]
+    
+    
+    pdf = [0 for i in range(0,256)]
+    cdf = [0 for i in range(0,256)]
+    c = [0 for i in range(0,256)]
+    newHist = [0 for i in range(0,256)] 
+    
+    for i in range(0,256):
+        pdf[i] = hist[i]/totalPixel
+        
+    plt.plot(pdf)
+    plt.show()
+    
+    cdf[0] = pdf[0]
+    for i in range(1,256):
+        cdf[i]=cdf[i-1]+pdf[i]
+        c[i] = round(cdf[i]*255)
+    
+    plt.plot(c)
+    plt.show()
+    
+    return c
+CdfOfDistribution = cdf(cv.imread("ace.jpg",cv.IMREAD_GRAYSCALE))
 
 
 
@@ -29,35 +61,35 @@ x = erlang()
 
 #pdf of erlang distribution
 
-sumOfDistribution = 0
+# sumOfDistribution = 0
 
-for i in range (0,256):
-    sumOfDistribution +=x[i]
+# for i in range (0,256):
+#     sumOfDistribution +=x[i]
 
 
-print(sumOfDistribution)
+# print(sumOfDistribution)
 
-PdfOfDistribution=[0 for i in range (0,256)]
+# PdfOfDistribution=[0 for i in range (0,256)]
 
-for i in range(256):
-    PdfOfDistribution[i] = x[i]/sumOfDistribution
+# for i in range(256):
+#     PdfOfDistribution[i] = x[i]/sumOfDistribution
 
-# plt.plot(PdfOfDistribution)
+# # plt.plot(PdfOfDistribution)
 
-# plt.title("pdf")
+# # plt.title("pdf")
 
-# plt.show()
+# # plt.show()
 
-#round CDF
-CdfOfDistribution=[0 for i in range (0,256)]
+# #round CDF
+# CdfOfDistribution=[0 for i in range (0,256)]
 
-CdfOfDistribution[0]=PdfOfDistribution[0]
+# CdfOfDistribution[0]=PdfOfDistribution[0]
 
-for i in range(1,256):
-    CdfOfDistribution[i] = CdfOfDistribution[i-1]+PdfOfDistribution[i]
+# for i in range(1,256):
+#     CdfOfDistribution[i] = CdfOfDistribution[i-1]+PdfOfDistribution[i]
 
-for i in range(0,256):
-    CdfOfDistribution[i] = round(CdfOfDistribution[i]*255)
+# for i in range(0,256):
+#     CdfOfDistribution[i] = round(CdfOfDistribution[i]*255)
 
 
 # plt.plot(CdfOfDistribution)
@@ -112,16 +144,18 @@ for i in range(0,256):
 
 map_ = [0 for i in range (0,256)]
 
+
+s = 0
 for i in range (0,256):
     g = cdf[i]
-    s = 0
+    
     for j in range (s,256):
         if(CdfOfDistribution[j] >= g):
             map_[i] = j
             s = j
             break
 
-#print(map_)
+print(map_)
 
 outImg = np.zeros(imgInp.shape)
 
@@ -137,7 +171,7 @@ cv.imshow('output',out)
 plt.figure(figsize=(15, 3))
 
 plt.subplot(1, 3, 1)
-plt.plot(x)
+plt.plot(CdfOfDistribution)
 plt.title("Erlang distribution")
 
 plt.subplot(1, 3, 2)

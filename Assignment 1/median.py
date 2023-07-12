@@ -7,7 +7,7 @@ img = cv2.imread('median2.jpg',cv2.IMREAD_GRAYSCALE)
 
 kernel = np.array(( [1,1,1,1,1],
                     [1,1,1,1,1],
-                    [1,3,1,1,1],
+                    [1,1,1,1,1],
                     [1,1,1,1,1],
                     [1,1,1,1,1]))
 kernel=kernel/9
@@ -27,7 +27,7 @@ def conv(img,kernel):
         for x in range(padding_x,image_bordered.shape[1]-padding_x):
             # mat = image_bordered[x:x+kernel2.shape[0],y:y+kernel2.shape[1]]
             # out [x,y]=np.sum(mat*kernel2)/255
-            temp = []
+            
             for j in range(-padding_y, padding_y+1):
                 for i in range(-padding_x, padding_x+1):
                     temp.append(image_bordered[y-j,x-i])

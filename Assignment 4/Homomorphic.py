@@ -46,7 +46,7 @@ for u in range(noisy_img1.shape[0]):
     for v in range(noisy_img1.shape[1]):
         i = (u - noisy_img1.shape[0]//2)**2
         j = (v - noisy_img1.shape[1]//2)**2
-        r = np.exp(-((c*(i+j))/(2*d0**2)))
+        r = np.exp(-((c*(i+j))/(d0**2)))
         r = (Yh-Yl) *(1-r) + Yl
         H[u][v] = r
 

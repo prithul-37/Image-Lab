@@ -15,23 +15,29 @@ for i in range (0,10):
                 for y in range(0,50):
                     img[i*50+x][j*50+y]=255 
                     
-(x,y)=(0,0)
-tau = 100
-a= 10
-out = np.zeros((525,525),np.uint8)
+(x,y)=(250,250)
+tau = int(input("TAU:"))
+a= float(input("Amplitude:"))
+out = np.zeros((500,500),np.uint8)
 
 
 for i in range (0,500):
     for j in range(0,500):
-        dx = x-i
-        dy = y-j 
-        dis = dx*dx+dy*dy
-        r = math.sqrt(dis)
+        dx = x - i
+        dy = y - j
+        r = math.sqrt(dx*dx+dy*dy)
+        bta =   math.atan2(dx, dy) + a*math.sin(2*math.pi*r/tau)
         
-        nx = i + 10*math.sin((2*3.1416*j)/120)
-        ny = j + 15*math.sin((2*3.1416*i)/250)
+        nx = 250 + r*math.cos(bta)
+        ny = 250 + r*math.sin(bta)
         
-        out[(int(nx)+12)%525][(int(ny)+12)%525] = img[i][j]
+        nx = int(nx)
+        ny = int(ny)
+        
+        
+        
+        if nx >= 0 and ny >= 0 and nx < img.shape[0] and ny < img.shape[1]:
+            out[i][j] = img[nx,ny]
         
         
 

@@ -10,7 +10,7 @@ kernel = np.array(( [1,1,1],
                     [1,1,1] ))
 
 print(np.sum(kernel))
-kernel=kernel/25
+kernel=kernel/9
 
 
 # kernel2 = np.array(( [1,0,-1],

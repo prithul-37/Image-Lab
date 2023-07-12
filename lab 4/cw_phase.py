@@ -17,7 +17,7 @@ def min_max_normalize(img_inp):
     return np.array(img_inp, dtype='uint8')
 
 # take input
-img_input = cv2.imread('input.jpg', 0)
+img_input = cv2.imread('lena.jpg', 0)
 
 img = dpc(img_input)
 
